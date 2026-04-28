@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f2ede4;
+  --ink: #1a1a18;
+  --ink-muted: #4a4a44;
+  --ink-faint: #8a8a80;
+  --accent: #1a1a18;
+  --max-width: 480px;
+  --page-pad: 1.75rem;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.65;
+  min-height: 100vh;
+  padding: 3rem var(--page-pad) 4rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.site-header {
+  margin-bottom: 2.5rem;
+}
+
+.site-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.site-title strong {
+  font-weight: 700;
+}
+
+.site-description {
+  font-size: 0.975rem;
+  color: var(--ink);
+  line-height: 1.75;
+}
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--ink-faint);
+  margin: 2.25rem 0;
+  opacity: 0.35;
+}
+
+/* ── Section headings ── */
+.section-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1.75rem;
+}
+
+/* ── Projects ── */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.project-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  letter-spacing: 0.01em;
+}
+
+.project-title a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.project-title a:hover {
+  opacity: 0.65;
+}
+
+.project-collaborators {
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.project-status {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.project-tags {
+  margin-top: 0.35rem;
+}
+
+.project-tags .label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'Libre Baskerville', serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.1rem;
+  color: var(--ink-muted);
+}
+
+.project-tags .tags {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+/* ── Bicycle illustration ── */
+.illustration {
+  margin-top: 3.5rem;
+  display: flex;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.illustration svg {
+  width: 180px;
+  height: auto;
+}
+
+/* ── Footer ── */
+.site-footer {
+  margin-top: 3rem;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (min-width: 600px) {
+  body {
+    padding-top: 4rem;
+  }
+
+  .site-title {
+    font-size: 2.4rem;
+  }
+}

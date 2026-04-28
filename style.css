@@ -156,13 +156,11 @@ body {
 
 /* ── Bicycle illustration ── */
 .illustration {
-  position: fixed;
-  bottom: 1.25rem;
-  right: 1.25rem;
-  width: 45px;
+  display: block;
+  width: 60px;
   height: auto;
+  margin: 0 auto 0.6rem;
   opacity: 0.6;
-  pointer-events: none;
 }
 
 /* ── Footer ── */

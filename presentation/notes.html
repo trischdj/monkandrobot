@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speaker Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Mono:wght@400;700&family=PT+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a1a18;
+      color: #f0ede4;
+      font-family: 'PT Serif', Georgia, serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      padding: 2rem 2.5rem;
+      gap: 1.25rem;
+    }
+
+    .header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .slide-count {
+      font-family: 'PT Mono', monospace;
+      font-size: 0.8rem;
+      color: rgba(240,237,228,0.4);
+      letter-spacing: 0.06em;
+    }
+
+    .hint {
+      font-family: 'PT Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(240,237,228,0.2);
+      letter-spacing: 0.04em;
+    }
+
+    .current-note {
+      flex: 1;
+      font-size: 1.35rem;
+      line-height: 1.7;
+      overflow-y: auto;
+      color: #f0ede4;
+    }
+
+    .current-note.waiting {
+      color: rgba(240,237,228,0.3);
+      font-style: italic;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(240,237,228,0.1);
+    }
+
+    .next-label {
+      font-family: 'PT Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(240,237,228,0.3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .next-note {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(240,237,228,0.45);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="slide-count" id="count">Slide — / —</div>
+    <div class="hint">← → or Space to advance · N to open this window</div>
+  </div>
+  <div class="current-note waiting" id="current">Waiting for presentation… advance a slide to sync.</div>
+  <hr class="divider" />
+  <div class="next-label">Up next</div>
+  <div class="next-note" id="next"></div>
+
+  <script>
+    window.addEventListener('message', function (e) {
+      const data = e.data;
+      if (!data || data.type !== 'slidechange') return;
+      const countEl = document.getElementById('count');
+      const currentEl = document.getElementById('current');
+      const nextEl = document.getElementById('next');
+      countEl.textContent = 'Slide ' + (data.index + 1) + ' / ' + data.total;
+      currentEl.textContent = data.note || '(no notes for this slide)';
+      currentEl.classList.remove('waiting');
+      nextEl.textContent = data.nextNote || '';
+    });
+  </script>
+</body>
+</html>

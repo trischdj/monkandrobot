@@ -585,5 +585,49 @@
     correctLevel: QRCode.CorrectLevel.M
   });
 </script>
+<script>
+  (function () {
+    const notes = JSON.parse(document.getElementById('speaker-notes').textContent || '[]');
+    let notesWin = null;
+
+    function sendToNotes(index) {
+      if (!notesWin || notesWin.closed) return;
+      notesWin.postMessage({
+        type: 'slidechange',
+        index: index,
+        total: notes.length,
+        note: notes[index] || '',
+        nextNote: notes[index + 1] || ''
+      }, '*');
+    }
+
+    // N key: open or focus the speaker notes window
+    window.addEventListener('keydown', function (e) {
+      if ((e.key === 'n' || e.key === 'N') && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        const t = e.target;
+        if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+        if (!notesWin || notesWin.closed) {
+          notesWin = window.open('notes.html', 'speaker-notes', 'width=820,height=520');
+        } else {
+          notesWin.focus();
+        }
+      }
+    });
+
+    // Relay slide changes to the notes window
+    document.querySelector('deck-stage').addEventListener('slidechange', function (e) {
+      sendToNotes(e.detail.index);
+    });
+
+    // Click anywhere on the slide to advance (skip links, buttons, inputs)
+    document.querySelector('deck-stage').addEventListener('click', function (e) {
+      const path = e.composedPath ? e.composedPath() : [];
+      const interactive = path.some(function (el) {
+        return el.tagName && /^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(el.tagName);
+      });
+      if (!interactive) document.querySelector('deck-stage').next();
+    });
+  })();
+</script>
 </body>
 </html>

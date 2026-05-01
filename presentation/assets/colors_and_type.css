@@ -1,0 +1,183 @@
+/* ============================================================
+   Monk + Robot — Design System
+   colors_and_type.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Mono:wght@400;700&display=swap');
+
+/* ── Base Color Tokens ─────────────────────────────────────── */
+:root {
+  --color-bg:         #f2ede4;   /* warm cream / parchment */
+  --color-ink:        #1a1a18;   /* near-black, warm */
+  --color-ink-muted:  #4a4a44;   /* secondary text */
+  --color-ink-faint:  #8a8a80;   /* tertiary / ghost text */
+  --color-accent:     #1a1a18;   /* same as ink — intentionally monochrome */
+  --color-border:     rgba(26, 26, 24, 0.12);  /* image / card border */
+  --color-divider:    rgba(138, 138, 128, 0.35); /* hr divider */
+}
+
+/* ── Semantic Color Roles ──────────────────────────────────── */
+:root {
+  --bg:               var(--color-bg);
+  --fg:               var(--color-ink);
+  --fg-secondary:     var(--color-ink-muted);
+  --fg-tertiary:      var(--color-ink-faint);
+  --border:           var(--color-border);
+  --divider:          var(--color-divider);
+  --link:             var(--color-ink);        /* links inherit ink color */
+  --link-hover-opacity: 0.65;
+  --image-hover-opacity: 0.85;
+}
+
+/* ── Font Families ─────────────────────────────────────────── */
+:root {
+  --font-serif:  'PT Serif', Georgia, serif;
+  --font-mono:   'PT Mono', 'Courier New', monospace;
+}
+
+/* ── Type Scale ────────────────────────────────────────────── */
+:root {
+  --text-display:   2rem;        /* site title */
+  --text-display-l: 2.4rem;      /* site title @600px+ */
+  --text-h2:        1.6rem;      /* section heading */
+  --text-h3:        1rem;        /* project title */
+  --text-body:      0.975rem;    /* body copy */
+  --text-sm:        0.9rem;      /* collaborators */
+  --text-xs:        0.85rem;     /* status */
+  --text-2xs:       0.78rem;     /* tags, footer */
+  --text-3xs:       0.72rem;     /* tag label */
+}
+
+/* ── Line Heights ──────────────────────────────────────────── */
+:root {
+  --leading-tight:  1.2;
+  --leading-snug:   1.5;
+  --leading-body:   1.65;
+  --leading-loose:  1.75;
+}
+
+/* ── Spacing Scale ─────────────────────────────────────────── */
+:root {
+  --space-1:   0.2rem;   /* ~3px  — tight internal gap */
+  --space-2:   0.35rem;  /* ~6px  — tag top margin */
+  --space-3:   0.75rem;  /* ~12px — image bottom margin */
+  --space-4:   1.25rem;  /* ~20px — header bottom */
+  --space-5:   1.75rem;  /* ~28px — page padding */
+  --space-6:   2rem;     /* ~32px — project gap */
+  --space-7:   2.25rem;  /* ~36px — divider margin */
+  --space-8:   2.5rem;   /* ~40px — header margin */
+  --space-9:   3rem;     /* ~48px — vertical padding top */
+  --space-10:  4rem;     /* ~64px — vertical padding bottom */
+}
+
+/* ── Layout Tokens ─────────────────────────────────────────── */
+:root {
+  --max-width:  480px;
+  --page-pad-x: 1.75rem;
+  --page-pad-y: 3rem;
+  --radius:     0;        /* no border radius — everything sharp */
+}
+
+/* ── Semantic Type Styles ──────────────────────────────────── */
+
+/* Apply to <body> */
+.body-text {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-serif);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: var(--leading-body);
+}
+
+/* Site title: "Monk+" */
+.display {
+  font-family: var(--font-serif);
+  font-size: var(--text-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: var(--leading-tight);
+}
+
+/* "Robot" portion of title */
+.display-mono {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* Section heading */
+.h2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+}
+
+/* Project title */
+.h3 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  letter-spacing: 0.01em;
+}
+
+/* Body copy */
+.body {
+  font-family: var(--font-serif);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: var(--leading-loose);
+}
+
+/* Collaborators line */
+.meta {
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  color: var(--fg);
+}
+
+/* Status line */
+.status {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--fg-secondary);
+}
+
+/* Tag label ("TAGS:") */
+.tag-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-secondary);
+}
+
+/* Tag values */
+.tag-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--fg-tertiary);
+}
+
+/* Footer / caption */
+.caption {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--fg-tertiary);
+}
+
+/* Links — inherits color, underline on hover */
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  opacity: var(--link-hover-opacity);
+}
